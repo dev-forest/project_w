@@ -3,8 +3,6 @@ from databases.mysql import MysqlConnection
 
 database = MysqlConnection()
 
-print(database)
-
 if not database.connection:
     config = database_config.get_database_config()
     database.init(host=config.get('host'),
