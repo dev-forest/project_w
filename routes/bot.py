@@ -1,4 +1,5 @@
 from aiogram import Dispatcher, types, executor
+from app.controller.send_welcome_controller import SendWelcomeController
 
 
 def dispatcher(bot):
@@ -6,7 +7,9 @@ def dispatcher(bot):
 
     @dp.message_handler(commands=['start', 'help'])
     async def send_welcome(message: types.Message):
-        await message.reply("Hi!\nI'm EchoBot!\nPowered by aiogram.")
+        controller = SendWelcomeController()
+        response = controller.response(route_name=send_welcome.__name__)
+        await message.reply(response)
 
     @dp.message_handler()
     async def echo(message: types.Message):

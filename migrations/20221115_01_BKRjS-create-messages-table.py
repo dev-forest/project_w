@@ -11,7 +11,7 @@ def apply_step(conn):
     cursor = conn.cursor()
     cursor.execute(
         "CREATE TABLE messages("
-        "id INT NOT NULL PRIMARY KEY,"
+        "id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,"
         "route VARCHAR(55) NOT NULL,"
         "message TEXT NOT NULL"
         ");"
