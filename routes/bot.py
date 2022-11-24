@@ -8,8 +8,9 @@ def dispatcher(bot):
     @dp.message_handler(commands=['start', 'help'])
     async def send_welcome(message: types.Message):
         controller = SendWelcomeController()
-        response = controller.response(route_name=send_welcome.__name__)
-        await message.reply(response)
+        text, buttons = controller.response(route_name=send_welcome.__name__)
+        keyboard = types.ReplyKeyboardMarkup(keyboard=buttons)
+        await message.reply(text, reply_markup=keyboard)
 
     @dp.message_handler()
     async def echo(message: types.Message):

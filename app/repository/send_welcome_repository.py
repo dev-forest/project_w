@@ -3,7 +3,7 @@ from app.repository.repository import Repository
 
 class SendWelcomeRepository(Repository):
 
-    def get_message(self):
-        sql = "SELECT message FROM messages WHERE route = %s"
-        result = self._database_connection.read(sql, (self._table))
-        return result.get('message')
+    def find_buttons_and_text(self):
+        sql = "SELECT * FROM messages WHERE route = %s ORDER BY sort"
+        result = self._database_connection.fetch(sql, (self._table))
+        return result

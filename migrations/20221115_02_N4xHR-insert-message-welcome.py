@@ -10,8 +10,11 @@ __depends__ = {'20221115_01_BKRjS-create-messages-table'}
 def apply_step(conn):
     cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO messages(route,message) "
-        "VALUES ('send_welcome' , 'Welcome to bot')"
+        "INSERT INTO messages(route,message,type,sort)"
+        "VALUES"
+        "('send_welcome' , 'Добро пожаловать!' , 'string', 0),"
+        "('send_welcome' , 'Искать вакансии' , 'button', 1),"
+        "('send_welcome' , 'Избранное' , 'button', 2)"
     )
 
 
